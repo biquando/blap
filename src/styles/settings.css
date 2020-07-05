@@ -1,0 +1,19 @@
+.following-header {
+    max-width: 205px;
+}
+
+.following-btn {
+    max-width: 55px;
+    max-height: 30px;
+    margin: auto;
+}
+
+.following-username {
+    display: inline;
+    margin-left: 7px;
+}
+
+.delete-acc-btn {
+    max-width: 120px;
+    margin-top: 10px;
+}
