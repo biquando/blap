@@ -6,7 +6,7 @@ import PostList from "./PostList"
 class AllPosts extends React.Component {
     componentDidUpdate() {
         if (this.props.isAuthenticated === false) {
-            window.location = "/"
+            window.location = "/blap/#/"
         }
     }
 

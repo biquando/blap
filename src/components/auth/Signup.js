@@ -30,7 +30,7 @@ class Signup extends React.Component {
         }
 
         if (isAuthenticated) {
-            window.location = "/"
+            window.location = "/blap/#/"
         }
     }
 

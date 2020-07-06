@@ -6,7 +6,7 @@ import PostList from "./PostList"
 class FollowingPosts extends React.Component {
     componentDidUpdate() {
         if (this.props.isAuthenticated === false) {
-            window.location = "/login"
+            window.location = "/blap/#/login"
         }
     }
 

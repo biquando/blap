@@ -11,7 +11,6 @@ import {
 const initialState = {
     error: null,
     creatingPost: false,
-    newPostId: null,
 }
 
 export default function (state = initialState, action) {
@@ -24,10 +23,10 @@ export default function (state = initialState, action) {
             }
         case POST_SUCCESS:
         case EDIT_POST:
+            window.location = "/blap/#/post?id=" + action.payload.newPostId
             return {
                 ...state,
                 creatingPost: false,
-                newPostId: action.payload.newPostId,
             }
         case POST_TOO_SHORT:
             return {

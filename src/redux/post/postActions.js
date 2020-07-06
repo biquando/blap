@@ -30,7 +30,7 @@ export const getPost = id => dispatch => {
 
 export const deletePost = id => (dispatch, getState) => {
     if (!id) {
-        window.location = "/"
+        window.location = "/blap/#/"
         return
     }
 

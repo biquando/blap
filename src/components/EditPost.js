@@ -43,10 +43,7 @@ class EditPost extends React.Component {
 
     componentDidUpdate() {
         if (this.props.isAuthenticated === false) {
-            window.location = "/login"
-        }
-        if (this.props.newPostId) {
-            window.location = "/post?id=" + this.props.newPostId
+            window.location = "/blap/#/login"
         }
 
         if (!this.editor && this.props.foundPost) {
@@ -156,7 +153,6 @@ class EditPost extends React.Component {
 const mapStateToProps = state => ({
     error: state.createPost.error,
     creatingPost: state.createPost.creatingPost,
-    newPostId: state.createPost.newPostId,
     isAuthenticated: state.auth.isAuthenticated,
     user: state.auth.user,
 
