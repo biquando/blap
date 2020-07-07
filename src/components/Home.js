@@ -24,7 +24,12 @@ class Home extends React.Component {
                 </h1>
                 <br />
                 <PostList
-                    listType={this.props.isAuthenticated ? "following" : "all"}
+                    listType={
+                        this.props.isAuthenticated && !this.props.noFollowing
+                            ? "following"
+                            : "all"
+                    }
+                    location={this.props.location}
                 />
             </div>
         )

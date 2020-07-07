@@ -50,8 +50,8 @@ export default function (props) {
             if (props.data.style === "ordered") {
                 return (
                     <ol>
-                        {props.data.items.map(text => (
-                            <li>
+                        {props.data.items.map((text, idx) => (
+                            <li key={idx}>
                                 <p>{text}</p>
                             </li>
                         ))}
@@ -60,8 +60,8 @@ export default function (props) {
             } else {
                 return (
                     <ul>
-                        {props.data.items.map(text => (
-                            <li>
+                        {props.data.items.map((text, idx) => (
+                            <li key={idx}>
                                 <p>{text}</p>
                             </li>
                         ))}

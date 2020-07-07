@@ -11,20 +11,31 @@ import {
 import { returnErrors } from "../error/errorActions"
 
 // Get all posts
-export const allPosts = () => dispatch => {
+export const allPosts = (before, after) => dispatch => {
     dispatch({ type: LOADING_POSTS })
 
+    // Body
+    const body = JSON.stringify({
+        before,
+        after,
+    })
+
+    // Headers
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+        },
+    }
+
     axios
-        .get("/posts/all")
+        .post("/posts/all", body, config)
         .then(res => {
-            const list = [...res.data]
-            list.sort((a, b) => {
-                return b.createdAt.localeCompare(a.createdAt)
-            })
+            const list = [...res.data.posts]
             dispatch({
                 type: ALL_POSTS,
                 payload: {
                     list,
+                    last: res.data.last,
                 },
             })
         })
@@ -32,21 +43,25 @@ export const allPosts = () => dispatch => {
 }
 
 // Get posts from followed users
-export const followingPosts = () => (dispatch, getState) => {
+export const followingPosts = (before, after) => (dispatch, getState) => {
     dispatch({ type: LOADING_POSTS })
 
+    // Body
+    const body = JSON.stringify({
+        before,
+        after,
+    })
+
     axios
-        .get("/posts/following", tokenConfig(getState))
+        .post("/posts/following", body, tokenConfig(getState))
         .then(res => {
             const list = [...res.data.posts]
-            list.sort((a, b) => {
-                return b.createdAt.localeCompare(a.createdAt)
-            })
             dispatch({
                 type: FOLLOWING_POSTS,
                 payload: {
                     list,
                     noFollowing: res.data.noFollowing,
+                    last: res.data.last,
                 },
             })
         })
@@ -59,20 +74,31 @@ export const followingPosts = () => (dispatch, getState) => {
 }
 
 // Get all of a user's posts
-export const userPosts = username => dispatch => {
+export const userPosts = (username, before, after) => dispatch => {
     dispatch({ type: LOADING_POSTS })
 
+    // Body
+    const body = JSON.stringify({
+        before,
+        after,
+    })
+
+    // Headers
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+        },
+    }
+
     axios
-        .get("/users/" + username + "/posts")
+        .post("/users/" + username + "/posts", body, config)
         .then(res => {
-            const list = [...res.data]
-            list.sort((a, b) => {
-                return b.createdAt.localeCompare(a.createdAt)
-            })
+            const list = [...res.data.posts]
             dispatch({
                 type: USER_POSTS,
                 payload: {
                     list,
+                    last: res.data.last,
                 },
             })
         })

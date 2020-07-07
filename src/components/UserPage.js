@@ -101,6 +101,7 @@ class UserPage extends React.Component {
                 <PostList
                     listType="user"
                     username={this.props.match.params.username}
+                    location={this.props.location}
                 />
             </div>
         )

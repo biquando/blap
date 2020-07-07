@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import qs from "qs"
 
 import PostPreview from "./PostPreview"
 import {
@@ -7,23 +8,86 @@ import {
     followingPosts,
     userPosts,
 } from "../redux/postList/postListActions"
+import { Link } from "react-router-dom"
 
 class PostList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            page: null,
+            before: null,
+            after: null,
+        }
+        this.updateList = this.updateList.bind(this)
+    }
+
     componentDidMount() {
-        switch (this.props.listType) {
-            case "all":
-                this.props.allPosts()
-                break
-            case "following":
-                this.props.followingPosts()
-                break
-            case "user":
-                this.props.userPosts(this.props.username)
-                break
-            default:
-                this.props.allPosts()
+        const query = qs.parse(this.props.location.search, {
+            ignoreQueryPrefix: true,
+        })
+        this.updateList(query)
+    }
+
+    componentDidUpdate() {
+        const query = qs.parse(this.props.location.search, {
+            ignoreQueryPrefix: true,
+        })
+        if (
+            query.page !== this.state.page ||
+            query.before !== this.state.before ||
+            query.after !== this.state.after
+        ) {
+            this.updateList(query)
         }
     }
+
+    updateList(query) {
+        this.setState(
+            {
+                page: query.page,
+                before: query.before,
+                after: query.after,
+            },
+            () => {
+                switch (this.props.listType) {
+                    case "all":
+                        this.props.allPosts(this.state.before, this.state.after)
+                        break
+                    case "following":
+                        this.props.followingPosts(
+                            this.state.before,
+                            this.state.after
+                        )
+                        break
+                    case "user":
+                        this.props.userPosts(
+                            this.props.username,
+                            this.state.before,
+                            this.state.after
+                        )
+                        break
+                    default:
+                        this.props.allPosts(this.before, this.after)
+                }
+            }
+        )
+    }
+
+    // componentDidUpdate() {
+    //     const query = qs.parse(this.props.location.search, {
+    //         ignoreQueryPrefix: true,
+    //     })
+    //     if (
+    //         query.page !== this.state.page ||
+    //         query.before !== this.state.before ||
+    //         query.after !== this.state.after
+    //     )
+    //         this.setState({
+    //             page: query.page,
+    //             before: query.before,
+    //             after: query.after,
+    //         })
+    // }
 
     render() {
         if (this.props.isLoading) {
@@ -52,6 +116,65 @@ class PostList extends React.Component {
                         }}
                     />
                 ))}
+
+                <nav>
+                    <ul className="pagination">
+                        {this.state.page > "1" && (
+                            <li className="page-item">
+                                <Link
+                                    className="page-link border-dark text-dark"
+                                    to={
+                                        "/" +
+                                        this.props.listType +
+                                        (this.props.listType === "user"
+                                            ? "/" + this.props.username
+                                            : "") +
+                                        "?page=" +
+                                        (parseInt(
+                                            this.state.page
+                                                ? this.state.page
+                                                : "1"
+                                        ) -
+                                            1) +
+                                        "&after=" +
+                                        (this.props.list.length > 0
+                                            ? this.props.list[0].createdAt
+                                            : "")
+                                    }
+                                >
+                                    Previous
+                                </Link>
+                            </li>
+                        )}
+                        {!this.props.last && (
+                            <li className="page-item">
+                                <Link
+                                    className="page-link border-dark text-dark"
+                                    to={
+                                        "/" +
+                                        this.props.listType +
+                                        (this.props.listType === "user"
+                                            ? "/" + this.props.username
+                                            : "") +
+                                        "?page=" +
+                                        (parseInt(
+                                            this.state.page
+                                                ? this.state.page
+                                                : "1"
+                                        ) +
+                                            1) +
+                                        "&before=" +
+                                        this.props.list[
+                                            this.props.list.length - 1
+                                        ].createdAt
+                                    }
+                                >
+                                    Next
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
+                </nav>
             </div>
         )
     }
@@ -60,6 +183,7 @@ class PostList extends React.Component {
 const mapStateToProps = state => ({
     isLoading: state.postList.isLoading,
     list: state.postList.list,
+    last: state.postList.last,
 })
 
 export default connect(mapStateToProps, {

@@ -11,6 +11,7 @@ const initialState = {
     list: [],
     noFollowing: null,
     userNotFound: null,
+    last: null,
 }
 
 export default function (state = initialState, action) {
@@ -19,6 +20,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isLoading: true,
+                last: true,
             }
         case ALL_POSTS:
             return {
