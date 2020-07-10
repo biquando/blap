@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import qs from "qs"
 
-import PostList from "./PostList"
+import PostList from "../PostList"
 
 class AllPosts extends React.Component {
     componentDidMount() {
@@ -39,8 +39,6 @@ class AllPosts extends React.Component {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    noFollowing: state.postList.noFollowing,
-    isLoading: state.postList.isLoading,
 })
 
 export default connect(mapStateToProps)(AllPosts)

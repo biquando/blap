@@ -7,6 +7,7 @@ import {
     AUTH_ERROR,
     USER_POSTS,
     USER_NOT_FOUND,
+    SEARCH_POSTS,
 } from "../actionTypes"
 import { returnErrors } from "../error/errorActions"
 
@@ -105,6 +106,39 @@ export const userPosts = (username, before, after) => dispatch => {
         .catch(() => {
             dispatch({ type: USER_NOT_FOUND })
         })
+}
+
+// Get a list of posts based on a search
+export const searchPosts = (target, before, after) => dispatch => {
+    dispatch({ type: LOADING_POSTS })
+
+    // Body
+    const body = JSON.stringify({
+        target,
+        before,
+        after,
+    })
+
+    // Headers
+    const config = {
+        headers: {
+            "Content-type": "application/json",
+        },
+    }
+
+    axios
+        .post("/posts/search", body, config)
+        .then(res => {
+            const list = [...res.data.posts]
+            dispatch({
+                type: SEARCH_POSTS,
+                payload: {
+                    list,
+                    last: res.data.last,
+                },
+            })
+        })
+        .catch()
 }
 
 // Setup config/headers and token

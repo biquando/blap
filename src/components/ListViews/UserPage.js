@@ -1,10 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import PostList from "./PostList"
-import { loadFollowingList, follow, unfollow } from "../redux/auth/authActions"
-import { userPosts } from "../redux/postList/postListActions"
-import "../styles/userPage.css"
+import PostList from "../PostList"
+import {
+    loadFollowingList,
+    follow,
+    unfollow,
+} from "../../redux/auth/authActions"
+import { userPosts } from "../../redux/postList/postListActions"
+import "../../styles/userPage.css"
 
 class UserPage extends React.Component {
     constructor(props) {

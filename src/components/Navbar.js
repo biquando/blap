@@ -6,6 +6,31 @@ import "../styles/navbar.css"
 import { logout } from "../redux/auth/authActions"
 
 class Navbar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            searchTarget: "",
+        }
+        this.onChange = this.onChange.bind(this)
+        this.submitSearch = this.submitSearch.bind(this)
+    }
+
+    onChange(e) {
+        const { name, value } = e.target
+        this.setState({ [name]: value })
+    }
+
+    submitSearch(e) {
+        e.preventDefault()
+        if (this.state.searchTarget.trim() === "") {
+            return
+        }
+
+        window.location =
+            "/blap/#/search?target=" + this.state.searchTarget.trim()
+        window.location.reload(true)
+    }
+
     render() {
         return (
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg static-top">
@@ -13,8 +38,8 @@ class Navbar extends React.Component {
                     blap
                 </Link>
                 <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav">
-                        <li className="navbar-item">
+                    <ul className="left-nav navbar-nav">
+                        <li className="navbar-all-link navbar-item">
                             <Link
                                 to={this.props.isAuthenticated ? "/all" : "/"}
                                 className="nav-link"
@@ -22,7 +47,7 @@ class Navbar extends React.Component {
                                 All
                             </Link>
                         </li>
-                        <li className="navbar-item">
+                        <li className="navbar-following-link navbar-item">
                             <Link
                                 to={
                                     this.props.isAuthenticated
@@ -34,7 +59,7 @@ class Navbar extends React.Component {
                                 Following
                             </Link>
                         </li>
-                        <li className="navbar-item">
+                        <li className="navbar-create-link navbar-item">
                             <Link
                                 to={
                                     this.props.isAuthenticated
@@ -47,10 +72,31 @@ class Navbar extends React.Component {
                             </Link>
                         </li>
                     </ul>
-                    <ul className="right-nav navbar-nav ml-md-auto">
-                        {!this.props.isLoading ? (
-                            !this.props.isAuthenticated ? (
-                                <div>
+                    {!this.props.isLoading ? (
+                        <ul className="right-nav navbar-nav ml-md-auto">
+                            <div className="search-bar">
+                                <form
+                                    className="form-inline my-2 my-lg-0"
+                                    autoComplete="off"
+                                >
+                                    <input
+                                        className="form-control mr-sm-2"
+                                        placeholder="Search"
+                                        value={this.state.searchTarget}
+                                        onChange={this.onChange}
+                                        name="searchTarget"
+                                    />
+                                    <button
+                                        className="btn btn-outline-success my-2 my-sm-0 mr-3"
+                                        onClick={this.submitSearch}
+                                    >
+                                        Search
+                                    </button>
+                                </form>
+                            </div>
+
+                            {!this.props.isAuthenticated ? (
+                                <div className="logged-in">
                                     <li className="navbar-item">
                                         <Link to="/signup" className="nav-link">
                                             Sign up
@@ -63,7 +109,7 @@ class Navbar extends React.Component {
                                     </li>
                                 </div>
                             ) : (
-                                <div>
+                                <div className="logged-out">
                                     <li className="navbar-item">
                                         <Link
                                             to={
@@ -93,9 +139,9 @@ class Navbar extends React.Component {
                                         </Link>
                                     </li>
                                 </div>
-                            )
-                        ) : null}
-                    </ul>
+                            )}
+                        </ul>
+                    ) : null}
                 </div>
             </nav>
         )

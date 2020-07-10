@@ -4,6 +4,7 @@ import {
     LOADING_POSTS,
     USER_POSTS,
     USER_NOT_FOUND,
+    SEARCH_POSTS,
 } from "../actionTypes"
 
 const initialState = {
@@ -44,7 +45,9 @@ export default function (state = initialState, action) {
                 userNotFound: true,
             }
         case FOLLOWING_POSTS:
+        case SEARCH_POSTS:
             return {
+                ...state,
                 isLoading: false,
                 ...action.payload,
             }

@@ -28,6 +28,7 @@ export const NO_POST_ID = "NO_POST_ID"
 export const ALL_POSTS = "ALL_POSTS"
 export const FOLLOWING_POSTS = "FOLLOWING_POSTS"
 export const USER_POSTS = "USER_POSTS"
+export const SEARCH_POSTS = "SEARCH_POSTS"
 export const USER_NOT_FOUND = "USER_NOT_FOUND"
 export const LOADING_POSTS = "LOADING_POSTS"
 

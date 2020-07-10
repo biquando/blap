@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import PostList from "./PostList"
+import PostList from "../PostList"
 
 class FollowingPosts extends React.Component {
     componentDidUpdate() {
@@ -41,7 +41,6 @@ class FollowingPosts extends React.Component {
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
     noFollowing: state.postList.noFollowing,
-    isLoading: state.postList.isLoading,
 })
 
 export default connect(mapStateToProps)(FollowingPosts)

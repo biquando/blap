@@ -7,6 +7,7 @@ import {
     allPosts,
     followingPosts,
     userPosts,
+    searchPosts,
 } from "../redux/postList/postListActions"
 import { Link } from "react-router-dom"
 
@@ -66,28 +67,19 @@ class PostList extends React.Component {
                             this.state.after
                         )
                         break
+                    case "search":
+                        this.props.searchPosts(
+                            this.props.target,
+                            this.state.before,
+                            this.state.after
+                        )
+                        break
                     default:
                         this.props.allPosts(this.before, this.after)
                 }
             }
         )
     }
-
-    // componentDidUpdate() {
-    //     const query = qs.parse(this.props.location.search, {
-    //         ignoreQueryPrefix: true,
-    //     })
-    //     if (
-    //         query.page !== this.state.page ||
-    //         query.before !== this.state.before ||
-    //         query.after !== this.state.after
-    //     )
-    //         this.setState({
-    //             page: query.page,
-    //             before: query.before,
-    //             after: query.after,
-    //         })
-    // }
 
     render() {
         if (this.props.isLoading) {
@@ -190,4 +182,5 @@ export default connect(mapStateToProps, {
     allPosts,
     followingPosts,
     userPosts,
+    searchPosts,
 })(PostList)

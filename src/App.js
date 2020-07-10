@@ -17,6 +17,7 @@ import {
     AllPosts,
     FollowingPosts,
     EditPost,
+    SearchPosts,
 } from "./components"
 
 class App extends React.Component {
@@ -48,6 +49,7 @@ class App extends React.Component {
                                 path="/user/:username"
                                 component={UserPage}
                             />
+                            <Route path="/search" component={SearchPosts} />
                         </div>
                     </div>
                 </Router>

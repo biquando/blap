@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7a026feda4874cc98953c99a0aa1448d",
+    "revision": "357111285d64977e9c8080dccfd3c4fe",
     "url": "/blap/index.html"
   },
   {
-    "revision": "49a9b73d29d0a9dce051",
+    "revision": "e1303379037ae1b4cb71",
     "url": "/blap/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "8945696d9423788b29e8",
+    "revision": "984182decd3b432c9718",
     "url": "/blap/static/css/main.9d3a9c39.chunk.css"
   },
   {
-    "revision": "49a9b73d29d0a9dce051",
-    "url": "/blap/static/js/2.402a1d98.chunk.js"
+    "revision": "e1303379037ae1b4cb71",
+    "url": "/blap/static/js/2.531dd2a8.chunk.js"
   },
   {
     "revision": "08939e39b52bff53371a59c0cd97d6d4",
-    "url": "/blap/static/js/2.402a1d98.chunk.js.LICENSE.txt"
+    "url": "/blap/static/js/2.531dd2a8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8945696d9423788b29e8",
-    "url": "/blap/static/js/main.f97200f2.chunk.js"
+    "revision": "984182decd3b432c9718",
+    "url": "/blap/static/js/main.87393111.chunk.js"
   },
   {
     "revision": "d24b80df9bbd325686c9",
