@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/blap/static/css/main.9d3a9c39.chunk.css",
-    "main.js": "/blap/static/js/main.87393111.chunk.js",
-    "main.js.map": "/blap/static/js/main.87393111.chunk.js.map",
+    "main.js": "/blap/static/js/main.4aa06461.chunk.js",
+    "main.js.map": "/blap/static/js/main.4aa06461.chunk.js.map",
     "runtime-main.js": "/blap/static/js/runtime-main.7c2c1014.js",
     "runtime-main.js.map": "/blap/static/js/runtime-main.7c2c1014.js.map",
     "static/css/2.af3c1da9.chunk.css": "/blap/static/css/2.af3c1da9.chunk.css",
     "static/js/2.531dd2a8.chunk.js": "/blap/static/js/2.531dd2a8.chunk.js",
     "static/js/2.531dd2a8.chunk.js.map": "/blap/static/js/2.531dd2a8.chunk.js.map",
     "index.html": "/blap/index.html",
-    "precache-manifest.3bf7abdd8ce25bc702b04b8de6e3321a.js": "/blap/precache-manifest.3bf7abdd8ce25bc702b04b8de6e3321a.js",
+    "precache-manifest.59be8d96ce4b24bd56489daeeb17c8ed.js": "/blap/precache-manifest.59be8d96ce4b24bd56489daeeb17c8ed.js",
     "service-worker.js": "/blap/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/blap/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.9d3a9c39.chunk.css.map": "/blap/static/css/main.9d3a9c39.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.531dd2a8.chunk.js",
     "static/css/main.9d3a9c39.chunk.css",
-    "static/js/main.87393111.chunk.js"
+    "static/js/main.4aa06461.chunk.js"
   ]
 }
