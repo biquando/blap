@@ -33,13 +33,13 @@ class Navbar extends React.Component {
 
     render() {
         return (
-            <nav className="navbar navbar-dark bg-dark navbar-expand-lg static-top">
+            <nav className="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
                 <Link to="/" className="navbar-brand">
                     blap
                 </Link>
                 <div className="collapse navbar-collapse">
                     <ul className="left-nav navbar-nav">
-                        <li className="navbar-all-link navbar-item">
+                        <li className="all-link navbar-item">
                             <Link
                                 to={this.props.isAuthenticated ? "/all" : "/"}
                                 className="nav-link"
@@ -47,7 +47,7 @@ class Navbar extends React.Component {
                                 All
                             </Link>
                         </li>
-                        <li className="navbar-following-link navbar-item">
+                        <li className="following-link navbar-item">
                             <Link
                                 to={
                                     this.props.isAuthenticated
@@ -59,7 +59,7 @@ class Navbar extends React.Component {
                                 Following
                             </Link>
                         </li>
-                        <li className="navbar-create-link navbar-item">
+                        <li className="create-link navbar-item">
                             <Link
                                 to={
                                     this.props.isAuthenticated

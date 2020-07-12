@@ -5,6 +5,7 @@ import * as serviceWorker from "./serviceWorker"
 
 import axios from "axios"
 axios.defaults.baseURL = "https://blap-api.herokuapp.com/api"
+// axios.defaults.baseURL = "http://localhost:5000/api"
 
 ReactDOM.render(
     <React.StrictMode>
