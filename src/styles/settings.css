@@ -17,3 +17,13 @@
     max-width: 120px;
     margin-top: 10px;
 }
+
+.remove-following-btn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}

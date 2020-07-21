@@ -30,7 +30,7 @@ class FollowingPosts extends React.Component {
 
         return (
             <div>
-                <h1>Following</h1>
+                <h1 className="text-dark">Following</h1>
                 <br />
                 <PostList listType="following" location={this.props.location} />
             </div>

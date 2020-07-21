@@ -2,8 +2,10 @@ import React from "react"
 import { Provider } from "react-redux"
 import store from "./redux/store"
 import { HashRouter as Router, Route } from "react-router-dom"
-import "bootstrap/dist/css/bootstrap.min.css"
+// import "bootstrap/dist/css/bootstrap.min.css"
+import "./scss/custom.scss"
 
+import "./styles/app.css"
 import { loadUser } from "./redux/auth/authActions"
 import {
     Navbar,
@@ -29,10 +31,10 @@ class App extends React.Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <div>
+                    <div className="text-dark">
                         <Navbar />
                         <br />
-                        <div className="container-fluid">
+                        <div className="container-fluid main">
                             <Route path="/" component={Home} exact />
                             <Route path="/all" component={AllPosts} />
                             <Route

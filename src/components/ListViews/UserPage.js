@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
 import PostList from "../PostList"
 import {
@@ -76,8 +77,8 @@ class UserPage extends React.Component {
 
         return (
             <div>
-                <div className="row">
-                    <h1 className="col col-md-auto">
+                <div>
+                    <h1 className="d-inline text-dark">
                         {this.props.match.params.username}
                     </h1>
                     {this.state.isFollowing !== null &&
@@ -86,20 +87,39 @@ class UserPage extends React.Component {
                         this.props.match.params.username ? (
                         this.state.isFollowing ? (
                             <button
-                                className="follow-btn col btn btn-sm btn-secondary btn-block"
+                                className="follow-btn d-inline mb-3 ml-3 btn btn-sm btn-secondary btn-block"
                                 onClick={this.toggleFollow}
                             >
                                 Unfollow
                             </button>
                         ) : (
                             <button
-                                className="follow-btn col btn btn-sm btn-primary btn-block"
+                                className="follow-btn d-inline mb-3 ml-3 btn btn-sm btn-info btn-block text-light"
                                 onClick={this.toggleFollow}
                             >
                                 Follow
                             </button>
                         )
-                    ) : null}
+                    ) : (
+                        this.props.self &&
+                        this.state.isFollowing !== null && (
+                            <Link to="/settings" className="">
+                                <svg
+                                    width="1.5em"
+                                    height="1.5em"
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-gear-fill text-secondary mb-3 ml-2"
+                                    fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 0 0-5.86 2.929 2.929 0 0 0 0 5.858z"
+                                    />
+                                </svg>
+                            </Link>
+                        )
+                    )}
                 </div>
                 <br />
                 <PostList

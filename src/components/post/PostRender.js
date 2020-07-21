@@ -3,7 +3,7 @@ import PostComponent from "./PostComponent"
 
 export default function (props) {
     return (
-        <div>
+        <div className="text-dark">
             {props.blocks.map((block, idx) => {
                 return (
                     <PostComponent

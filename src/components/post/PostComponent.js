@@ -23,7 +23,7 @@ export default function (props) {
                 classModifications += "w-100 "
             } else {
                 styleModifications = {
-                    maxWidth: "650px",
+                    maxWidth: "100%",
                     margin: "auto",
                     display: "block",
                 }

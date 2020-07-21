@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 error: {
-                    msg: "Your post must have at least 2 blocks",
+                    msg: "Your post must have at least 2 elements",
                 },
                 creatingPost: false,
             }
@@ -40,7 +40,8 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 error: {
-                    msg: "The first block of your post must be the title (H1)",
+                    msg:
+                        "The first element of your post must be the title (H1)",
                 },
                 creatingPost: false,
             }

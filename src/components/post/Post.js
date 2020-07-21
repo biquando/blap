@@ -49,10 +49,10 @@ class Post extends React.Component {
         if (this.props.foundPost) {
             return (
                 <div className="blog-post">
-                    <div className="text-muted">
+                    <div className="text-secondary">
                         <Link
                             to={"/user/" + this.props.author}
-                            className="text-muted author"
+                            className="blog-post-meta author text-secondary"
                         >
                             {this.props.author}
                         </Link>{" "}
@@ -70,7 +70,7 @@ class Post extends React.Component {
                         <div className="row post-btns">
                             <Link
                                 to={"/edit?id=" + this.id}
-                                className="edit-btn btn btn-sm btn-primary btn-block"
+                                className="edit-btn btn btn-sm btn-secondary btn-block"
                             >
                                 Edit
                             </Link>

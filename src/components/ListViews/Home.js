@@ -15,7 +15,7 @@ class Home extends React.Component {
 
         return (
             <div>
-                <h1>
+                <h1 className="text-dark">
                     {this.props.isAuthenticated
                         ? this.props.noFollowing && !this.props.isLoading
                             ? "Discover"

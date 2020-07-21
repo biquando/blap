@@ -32,7 +32,9 @@ class SearchPosts extends React.Component {
         if (this.state.target !== "") {
             return (
                 <div>
-                    <h1>{'Search - "' + this.state.target + '"'}</h1>
+                    <h1 className="text-dark">
+                        {'Search - "' + this.state.target + '"'}
+                    </h1>
                     <br />
                     <PostList
                         listType="search"

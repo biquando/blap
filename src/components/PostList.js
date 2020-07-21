@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import qs from "qs"
+import { Link } from "react-router-dom"
 
 import PostPreview from "./PostPreview"
 import {
@@ -9,7 +10,7 @@ import {
     userPosts,
     searchPosts,
 } from "../redux/postList/postListActions"
-import { Link } from "react-router-dom"
+import "../styles/postlist.css"
 
 class PostList extends React.Component {
     constructor(props) {
@@ -94,6 +95,8 @@ class PostList extends React.Component {
             return <h3 className="text-center">There's nothing here!</h3>
         }
 
+        const previousModifier = this.props.last ? "" : " previous"
+        const nextModifier = this.state.page > "1" ? " next" : ""
         return (
             <div>
                 {this.props.list.map(post => (
@@ -114,7 +117,7 @@ class PostList extends React.Component {
                         {this.state.page > "1" && (
                             <li className="page-item">
                                 <Link
-                                    className="page-link border-dark text-dark"
+                                    className=""
                                     to={
                                         "/" +
                                         this.props.listType +
@@ -134,14 +137,21 @@ class PostList extends React.Component {
                                             : "")
                                     }
                                 >
-                                    Previous
+                                    <button
+                                        className={
+                                            "btn btn-outline-dark" +
+                                            previousModifier
+                                        }
+                                    >
+                                        Previous
+                                    </button>
                                 </Link>
                             </li>
                         )}
                         {!this.props.last && (
                             <li className="page-item">
                                 <Link
-                                    className="page-link border-dark text-dark"
+                                    className=""
                                     to={
                                         "/" +
                                         this.props.listType +
@@ -161,7 +171,14 @@ class PostList extends React.Component {
                                         ].createdAt
                                     }
                                 >
-                                    Next
+                                    <button
+                                        className={
+                                            "btn btn-outline-dark" +
+                                            nextModifier
+                                        }
+                                    >
+                                        Next
+                                    </button>
                                 </Link>
                             </li>
                         )}

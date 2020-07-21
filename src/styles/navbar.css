@@ -1,3 +1,16 @@
 .right-nav li {
     float: left;
 }
+
+.navbar-toggler {
+    background-color: #ffffff18;
+}
+
+.btn-text {
+    /* color: #ffffffdd; */
+    color: #fefefc;
+}
+
+.create-link {
+    max-width: 6em;
+}

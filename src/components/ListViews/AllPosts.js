@@ -29,7 +29,7 @@ class AllPosts extends React.Component {
 
         return (
             <div>
-                <h1>All Posts</h1>
+                <h1 className="text-dark">All Posts</h1>
                 <br />
                 <PostList listType="all" location={this.props.location} />
             </div>
